@@ -1,0 +1,25 @@
+{
+  "extends": "@vue/tsconfig/tsconfig.dom.json",
+  "include": [
+    "env.d.ts",
+    "example/**/*",
+    "example/**/*.vue",
+    "packages/**/*",
+    "packages/**/*.vue"
+  ],
+  "compilerOptions": {
+    "ignoreDeprecations": "5.0",
+    "isolatedModules": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "./example/*"
+      ],
+    }
+  },
+  "references": [
+    {
+      "path": "./tsconfig.config.json"
+    }
+  ]
+}
