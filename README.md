@@ -2,6 +2,7 @@
 
 gherkin-editor for vue3
 
-## forks
+## 参考项目
 
 https://github.com/SmartBear/react-gherkin-editor
+https://github.com/CarterLi/vue3-ace-editor
