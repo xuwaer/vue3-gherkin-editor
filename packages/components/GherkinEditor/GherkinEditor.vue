@@ -215,4 +215,3 @@ defineExpose({
 </script>
 
 <style scoped></style>
-../../types
