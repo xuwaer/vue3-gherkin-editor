@@ -1,10 +1,16 @@
 {
   "name": "@xuwaer/vue3-gherkin-editor",
   "version": "0.0.1",
+  "description": "gherkin-editor for vue3",
   "author": {
     "name": "xuwaer@gmail.com",
     "email": "xuwaer@gmail.com"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xuwaer/vue3-gherkin-editor.git"
+  },
+  "homepage": "https://github.com/xuwaer/vue3-gherkin-editor",
   "keyword": "gherkin editor vue3",
   "private": false,
   "type": "module",
