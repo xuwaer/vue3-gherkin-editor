@@ -1,7 +1,12 @@
 {
   "name": "@xuwaer/vue3-gherkin-editor",
   "version": "0.0.1",
-  "private": true,
+  "author": {
+    "name": "xuwaer@gmail.com",
+    "email": "xuwaer@gmail.com"
+  },
+  "keyword": "gherkin editor vue3",
+  "private": false,
   "type": "module",
   "files": [
     "dist",
@@ -9,6 +14,7 @@
     "package.json",
     "README.md"
   ],
+  "license": "MIT",
   "main": "./dist/vue3-gherkin-editor.umd.cjs",
   "module": "./dist/vue3-gherkin-editor.js",
   "browser": "./dist/vue3-gherkin-editor.js",
