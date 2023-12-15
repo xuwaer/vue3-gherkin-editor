@@ -51,6 +51,8 @@ import { computed, ref } from 'vue'
 import GherkinEditor from '@xuwaer/vue3-gherkin-editor'
 import { type Ace } from 'ace-builds';
 
+const ghRef = ref(null)
+const editor = computed<Ace.Editor>(() => ghRef.value?.editor)
 
 <GherkinEditor
   class="full"
@@ -60,8 +62,6 @@ import { type Ace } from 'ace-builds';
   activateLinter
   :setOptions="{ showLineNumbers: true }"
 />
-const ghRef = ref(null)
-const editor = computed<Ace.Editor>(() => ghRef.value?.editor)
 
 ```
 
