@@ -56,17 +56,6 @@ const getGherkinDialectFunctions = {
 }
 
 const defaultOptions = {
-  fontFamily: [
-    "'SFMono-Medium'",
-    "'SF Mono'",
-    "'Segoe UI Mono'",
-    "'Roboto Mono'",
-    "'Ubuntu Mono'",
-    'Menlo',
-    'Consolas',
-    'Courier',
-    'monospace'
-  ].join(', '),
   enableBasicAutocompletion: true,
   enableLiveAutocompletion: true,
   showLineNumbers: false,

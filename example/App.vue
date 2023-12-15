@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import { VAceEditor } from 'vue3-ace-editor'
 import './ace-config'
-import GherkinEditor from '../packages/index'
+import GherkinEditor from '../dist/vue3-gherkin-editor'
 import data from './gherkin.txt?raw'
 
 const content = ref(data)

@@ -1,17 +1,32 @@
 {
-  "name": "vue3-gherkin-editor",
-  "version": "0.0.0",
+  "name": "@xuwaer/vue3-gherkin-editor",
+  "version": "0.0.1",
   "private": true,
   "type": "module",
+  "files": [
+    "dist",
+    "package.json",
+    "README.md"
+  ],
+  "main": "./dist/vue3-gherkin-editor.umd.cjs",
+  "module": "./dist/vue3-gherkin-editor.js",
+  "browser": "./dist/vue3-gherkin-editor.js",
+  "exports": {
+    ".": {
+      "import": "./dist/vue3-gherkin-editor.js",
+      "require": "./dist/vue3-gherkin-editor.umd.cjs"
+    }
+  },
+  "types": "./dist/types/index.d.ts",
   "scripts": {
     "dev": "vite",
     "clean": "rimraf ./dist",
-    "build:lib": "run-p type-check build:es build:browser",
+    "build:lib": "run-p type-check build:es build:browser ",
     "build:es": "vite build",
     "build:browser": "vite -f iife build",
     "preview": "vite preview",
     "test:e2e": "playwright test",
-    "type-check": "vue-tsc --noEmit",
+    "type-check": "vue-tsc -noEmit",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
     "format": "prettier --write src/"
   },
