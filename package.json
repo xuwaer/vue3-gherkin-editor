@@ -5,6 +5,7 @@
   "type": "module",
   "files": [
     "dist",
+    "types",
     "package.json",
     "README.md"
   ],
@@ -13,11 +14,17 @@
   "browser": "./dist/vue3-gherkin-editor.js",
   "exports": {
     ".": {
-      "import": "./dist/vue3-gherkin-editor.js",
-      "require": "./dist/vue3-gherkin-editor.umd.cjs"
+      "import": {
+        "types": "./types/index.d.ts",
+        "default": "./dist/vue3-gherkin-editor.js"
+      },
+      "require": {
+        "types": "./types/index.d.ts",
+        "default": "./dist/vue3-gherkin-editor.umd.cjs"
+      }
     }
   },
-  "types": "./dist/types/index.d.ts",
+  "types": "./types/index.d.ts",
   "scripts": {
     "dev": "vite",
     "clean": "rimraf ./dist",
