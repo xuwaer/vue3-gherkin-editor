@@ -2,6 +2,11 @@
 
 gherkin-editor for vue3
 
+#### Install
+```bash
+npm add @xuwaer/vue3-gherkin-editor
+```
+
 #### 1、GherkinEditor
 
 ```typescript
