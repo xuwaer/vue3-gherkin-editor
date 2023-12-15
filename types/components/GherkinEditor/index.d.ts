@@ -10,11 +10,9 @@ export interface GherkinEditorProps {
     onParse?: OnParseCallback;
     autoCompleteFunction?: AutoCompleteFunc;
     autoFocus?: boolean;
-    initialHeight?: number;
-    theme?: string;
+    theme?: 'cucumber' | 'jira';
     mode?: 'gherkin_i18n' | 'gherkin_background_i18n' | 'gherkin_scenario_i18n';
     fontSize?: number;
-    width?: string;
     showPrintMargin?: boolean;
     showGutter?: boolean;
     highlightActiveLine?: boolean;
