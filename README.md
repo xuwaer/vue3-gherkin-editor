@@ -2,12 +2,12 @@
 
 gherkin-editor for vue3
 
-#### GherkinEditor.vue
+#### 1、GherkinEditor
 
 ```typescript
 import GherkinEditor from '@xuwaer/vue3-gherkin-editor'
 
-<gherkin-editor
+<GherkinEditor
   class="full"
   v-model="content"
   showGutter
@@ -33,7 +33,7 @@ import GherkinEditor from '@xuwaer/vue3-gherkin-editor'
 | setOptions          | `object`           |                | 见[AceEditor](https://ajaxorg.github.io/ace-api-docs/interfaces/Ace.EditorOptions.html) |
 
 
-#### GherkinLinter.ts
+#### 2、GherkinLinter
 ```typescript
 import  { GherkinLinter } from '@xuwaer/vue3-gherkin-editor'
 
@@ -44,7 +44,29 @@ linter.setLanguage('en')
 linter.parse(data) // 需要解析的文本
 ```
 
+
+#### 3、Ace Editor Instance
+```typescript
+import { computed, ref } from 'vue'
+import GherkinEditor from '@xuwaer/vue3-gherkin-editor'
+import { type Ace } from 'ace-builds';
+
+
+<GherkinEditor
+  class="full"
+  v-model="content"
+  showGutter
+  ref="editorRef"
+  activateLinter
+  :setOptions="{ showLineNumbers: true }"
+/>
+const ghRef = ref(null)
+const editor = computed<Ace.Editor>(() => ghRef.value?.editor)
+
+```
+
 #### 参考项目
 
+https://github.com/ajaxorg/ace
 https://github.com/SmartBear/react-gherkin-editor
 https://github.com/CarterLi/vue3-ace-editor

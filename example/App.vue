@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import { VAceEditor } from 'vue3-ace-editor'
 import './ace-config'
 import GherkinEditor from '../dist/vue3-gherkin-editor'
@@ -7,6 +7,8 @@ import data from './gherkin.txt?raw'
 
 const content = ref(data)
 const aceRef = ref()
+
+const editor = computed(() => aceRef.value?.editor)
 
 const parsedJson = ref('')
 
@@ -51,8 +53,8 @@ function onParse(val: any) {
 main {
   padding: 20px;
   flex: 1;
-  margin-top: 15px;
   display: flex;
+  height: 100vh;
 }
 
 .vue-ace-editor {
