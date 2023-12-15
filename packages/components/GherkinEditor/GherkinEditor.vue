@@ -4,7 +4,6 @@
     v-model:value="content"
     :theme="theme"
     :name="uniqueId"
-    style="height: 600px"
     :options="options"
     @init="ready = true"
   />
@@ -71,11 +70,9 @@ export interface GherkinEditorProps {
   onParse?: OnParseCallback
   autoCompleteFunction?: AutoCompleteFunc
   autoFocus?: boolean
-  initialHeight?: number
-  theme?: string
+  theme?: 'cucumber' | 'jira'
   mode?: 'gherkin_i18n' | 'gherkin_background_i18n' | 'gherkin_scenario_i18n'
   fontSize?: number
-  width?: string
   showPrintMargin?: boolean
   showGutter?: boolean
   highlightActiveLine?: boolean
@@ -91,11 +88,9 @@ const props = withDefaults(defineProps<GherkinEditorProps>(), {
   onParse: () => {},
   autoCompleteFunction: () => Promise.resolve([]),
   autoFocus: false,
-  initialHeight: 500,
   theme: 'cucumber',
   mode: 'gherkin_i18n',
   fontSize: 14,
-  width: '100%',
   showPrintMargin: false,
   showGutter: false,
   highlightActiveLine: false,
@@ -203,6 +198,7 @@ const options: Partial<Ace.EditorOptions> = {
   showGutter: props.showGutter,
   showPrintMargin: props.showPrintMargin,
   highlightActiveLine: props.highlightActiveLine,
+  fontSize: props.fontSize,
   ...setOptions.value
 }
 
