@@ -33,8 +33,16 @@ import GherkinEditor from '@xuwaer/vue3-gherkin-editor'
 | setOptions          | `object`           |                | 见[AceEditor](https://ajaxorg.github.io/ace-api-docs/interfaces/Ace.EditorOptions.html) |
 
 
-#### GherkinEditor.vue
+#### GherkinLinter.ts
+```typescript
+import  { GherkinLinter } from '@xuwaer/vue3-gherkin-editor'
 
+const linter = new GherkinLinter((val: string) => {
+  console.log('parse', val) // 解析结果
+})
+linter.setLanguage('en')
+linter.parse(data) // 需要解析的文本
+```
 
 #### 参考项目
 
