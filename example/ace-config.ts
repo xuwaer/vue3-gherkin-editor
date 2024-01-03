@@ -9,9 +9,6 @@ ace.config.setModuleUrl('ace/theme/github', themeGithubUrl);
 import themeChromeUrl from 'ace-builds/src-noconflict/theme-chrome?url';
 ace.config.setModuleUrl('ace/theme/chrome', themeChromeUrl);
 
-import themeXcodeUrl from 'ace-builds/src-noconflict/theme-xcode?url';
-ace.config.setModuleUrl('ace/theme/monokai', themeXcodeUrl);
-
 import workerBaseUrl from 'ace-builds/src-noconflict/worker-base?url';
 ace.config.setModuleUrl('ace/mode/base', workerBaseUrl);
 

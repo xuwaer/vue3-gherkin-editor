@@ -29,13 +29,13 @@ function onParse(val: any) {
       show-gutter
       activate-linter
       :on-parse="onParse"
-      :set-options="{ showLineNumbers: true, showFoldWidgets: true }"
+      :set-options="{ showLineNumbers: true, showFoldWidgets: false, showPrintMargin: false }"
     />
     <VAceEditor
       v-model:value="parsedJson"
       class="outline-tree"
       lang="json"
-      theme="xcode"
+      theme="chrome"
       readonly
       :options="{
         useWorker: true,
