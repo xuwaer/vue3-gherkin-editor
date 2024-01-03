@@ -56,8 +56,8 @@ import { computed, ref } from 'vue'
 import GherkinEditor from '@xuwaer/vue3-gherkin-editor'
 import { type Ace } from 'ace-builds';
 
-const ghRef = ref(null)
-const editor = computed<Ace.Editor>(() => ghRef.value?.editor)
+const editorRef = ref(null)
+const editor = computed<Ace.Editor>(() => editorRef.value?.editor)
 
 <GherkinEditor
   class="full"
