@@ -10,7 +10,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, effect, ref, toRefs } from 'vue'
+import { computed, ref, toRefs, watchEffect } from 'vue'
 import { VAceEditor } from 'vue3-ace-editor'
 import type { VAceEditorInstance } from 'vue3-ace-editor/types'
 import { require as acequire, type Ace } from 'ace-builds'
@@ -119,13 +119,13 @@ const isLinterActivated = computed(() => activateLinter.value && showGutter.valu
 const aceEditorRef = ref<VAceEditorInstance>()
 const ready = ref(false)
 const editor = computed(() => (ready.value ? aceEditorRef.value!._editor : null))
-const gherkinAnnotator = ref<any>(null)
+const gherkinAnnotator = ref<GherkinAnnotator | null>(null)
 
-effect(() => {
+watchEffect(() => {
   autoFocus.value && editor.value?.focus()
 })
 
-effect(() => {
+watchEffect(() => {
   // 设置提示菜单
   const keywordCompleter = new KeywordCompleter(getGherkinDialect.value)
   const stepCompleter = new StepCompleter(autoCompleteFunction.value, getGherkinDialect.value)
@@ -144,7 +144,7 @@ const currentLanguage = computed<LanguageIdentifier>({
   }
 })
 
-effect(() => {
+watchEffect(() => {
   // 设置dialect模式
   setGherkinDialect.value(currentLanguage.value)
   editor.value?.session.setMode({
@@ -154,7 +154,7 @@ effect(() => {
   })
 })
 
-effect(() => {
+watchEffect(() => {
   // 语法检查
   if (!isLinterActivated.value) {
     gherkinAnnotator.value = null
@@ -174,7 +174,7 @@ effect(() => {
   }
 })
 
-effect(() => {
+watchEffect(() => {
   if (gherkinAnnotator.value) {
     // 更新语法解释器
     gherkinAnnotator.value.setLanguage(currentLanguage.value)

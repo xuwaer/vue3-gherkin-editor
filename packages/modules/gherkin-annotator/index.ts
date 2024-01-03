@@ -20,7 +20,7 @@ export default class GherkinAnnotator {
     this.language = language
   }
 
-  setMode(mode: 'gherkin_background_i18n' | 'gherkin_scenario_i18n' | '') {
+  setMode(mode: 'gherkin_background_i18n' | 'gherkin_scenario_i18n' | 'gherkin_i18n') {
     switch (mode) {
       case 'gherkin_background_i18n':
         this.mode = 'background'
