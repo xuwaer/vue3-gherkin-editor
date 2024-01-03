@@ -20,7 +20,8 @@ export const setGherkinDialect = (language: LanguageIdentifier) => {
         ...dialect.background.map(trimWhiteSpace),
         ...dialect.scenario.map(trimWhiteSpace),
         ...dialect.scenarioOutline.map(trimWhiteSpace),
-        ...dialect.examples.map(trimWhiteSpace)
+        ...dialect.examples.map(trimWhiteSpace),
+        ...dialect.rule.map(trimWhiteSpace),
       ])
     ],
     keywords: [

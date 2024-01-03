@@ -2,10 +2,12 @@
 import { computed, ref } from 'vue'
 import { VAceEditor } from 'vue3-ace-editor'
 import './ace-config'
-import GherkinEditor from '../dist/vue3-gherkin-editor'
-import data from './gherkin.txt?raw'
+// import GherkinEditor from '../dist/vue3-gherkin-editor'
+import GherkinEditor from '../packages'
+import example1 from "./assets/example1.txt?raw"
+import example2 from "./assets/example2.txt?raw"
 
-const content = ref(data)
+const content = ref(example2)
 const aceRef = ref()
 
 const editor = computed(() => aceRef.value?.editor)
