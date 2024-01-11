@@ -28,6 +28,7 @@ function onParse(val: any) {
       v-model="content"
       show-gutter
       activate-linter
+      mode="gherkin_feature_i18n"
       :on-parse="onParse"
       :set-options="{ showLineNumbers: true, showFoldWidgets: false, showPrintMargin: false }"
     />
