@@ -11,7 +11,7 @@ export interface GherkinEditorProps {
     autoCompleteFunction?: AutoCompleteFunc;
     autoFocus?: boolean;
     theme?: 'cucumber' | 'jira';
-    mode?: 'gherkin_i18n' | 'gherkin_background_i18n' | 'gherkin_scenario_i18n';
+    mode?: 'gherkin_i18n' | 'gherkin_background_i18n' | 'gherkin_scenario_i18n' | 'gherkin_feature_i18n';
     fontSize?: number;
     showPrintMargin?: boolean;
     showGutter?: boolean;
