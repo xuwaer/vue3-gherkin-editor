@@ -6,7 +6,7 @@ import type { Ace } from 'ace-builds'
 export default class GherkinAnnotator {
   private linter: GherkinLinter
   public language: LanguageIdentifier = 'en'
-  public mode: '' | 'scenario' | 'background' = ''
+  public mode: '' | 'scenario' | 'background' | 'feature' = ''
 
   constructor(public session: Ace.EditSession, private onParse?: OnParseCallback) {
     this.linter = new GherkinLinter(onParse)
@@ -20,13 +20,16 @@ export default class GherkinAnnotator {
     this.language = language
   }
 
-  setMode(mode: 'gherkin_background_i18n' | 'gherkin_scenario_i18n' | 'gherkin_i18n') {
+  setMode(mode: 'gherkin_background_i18n' | 'gherkin_scenario_i18n' | 'gherkin_feature_i18n' | 'gherkin_i18n') {
     switch (mode) {
       case 'gherkin_background_i18n':
         this.mode = 'background'
         break
       case 'gherkin_scenario_i18n':
         this.mode = 'scenario'
+        break
+      case 'gherkin_feature_i18n':
+        this.mode = 'feature'
         break
       default:
         this.mode = ''

@@ -25,6 +25,10 @@ import {
   getGherkinDialect as getBackgroundDialect
 } from '../../modules/dialects/gherkin_background_i18n'
 import {
+  setGherkinDialect as setFeatureDialect,
+  getGherkinDialect as getFeatureDialect
+} from "../../modules/dialects/gherkin_feature_i18n"
+import {
   setGherkinDialect as setScenarioDialect,
   getGherkinDialect as getScenarioDialect
 } from '../../modules/dialects/gherkin_scenario_i18n'
@@ -38,6 +42,7 @@ import '../../themes/cucumber'
 import '../../modules/mode/gherkin_i18n'
 import '../../modules/mode/gherkin_background_i18n'
 import '../../modules/mode/gherkin_scenario_i18n'
+import '../../modules/mode/gherkin_feature_i18n'
 import type { OnParseCallback } from '../../lib/gherkin-linter'
 import type { LanguageIdentifier } from '../../lib/gherkin-languages'
 import type { AutoCompleteFunc } from '../../types'
@@ -45,13 +50,15 @@ import type { AutoCompleteFunc } from '../../types'
 const setGherkinDialectFunctions = {
   gherkin_i18n: setDialect,
   gherkin_background_i18n: setBackgroundDialect,
-  gherkin_scenario_i18n: setScenarioDialect
+  gherkin_scenario_i18n: setScenarioDialect,
+  gherkin_feature_i18n: setFeatureDialect
 }
 
 const getGherkinDialectFunctions = {
   gherkin_i18n: getDialect,
   gherkin_background_i18n: getBackgroundDialect,
-  gherkin_scenario_i18n: getScenarioDialect
+  gherkin_scenario_i18n: getScenarioDialect,
+  gherkin_feature_i18n: getFeatureDialect
 }
 
 const defaultOptions = {
@@ -71,7 +78,7 @@ export interface GherkinEditorProps {
   autoCompleteFunction?: AutoCompleteFunc
   autoFocus?: boolean
   theme?: 'cucumber' | 'jira'
-  mode?: 'gherkin_i18n' | 'gherkin_background_i18n' | 'gherkin_scenario_i18n'
+  mode?: 'gherkin_i18n' | 'gherkin_background_i18n' | 'gherkin_scenario_i18n' | 'gherkin_feature_i18n'
   fontSize?: number
   showPrintMargin?: boolean
   showGutter?: boolean

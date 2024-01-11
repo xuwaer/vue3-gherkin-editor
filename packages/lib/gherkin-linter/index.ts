@@ -60,7 +60,7 @@ export default class GherkinLinter {
       return this
     }
 
-    if (type === 'scenario' || type === 'background') {
+    if (type === 'scenario' || type === 'background' || type === 'feature') {
       this.subsetType = type
       this.isSubset = true
     } else {
@@ -122,11 +122,15 @@ export default class GherkinLinter {
     }
 
     if (this.isSubset) {
-      // 部分录入，需要补全Feature部分
-      const subsetKeyword = gherkinLanguages[this.language][this.subsetType as LanguageSubsetIdentifier][0]
-
-      featurePrefix = `${featurePrefix}${this.featureKeyword}:\n${subsetKeyword}:\n`
-      this.offset += 2
+      if (this.subsetType == 'feature') {
+        featurePrefix = `${featurePrefix}${this.featureKeyword}:\n`
+        this.offset += 1
+      } else {
+        // 部分录入，需要补全Feature部分
+        const subsetKeyword = gherkinLanguages[this.language][this.subsetType as LanguageSubsetIdentifier][0]
+        featurePrefix = `${featurePrefix}${this.featureKeyword}:\n${subsetKeyword}:\n`
+        this.offset += 2
+      }
     }
 
     return `${featurePrefix}${gherkin}`
