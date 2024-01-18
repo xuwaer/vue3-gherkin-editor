@@ -122,14 +122,15 @@ export default class GherkinLinter {
     }
 
     if (this.isSubset) {
+      // 部分录入模式时，需要加入注释行表明校验新行
       if (this.subsetType == 'feature') {
-        featurePrefix = `${featurePrefix}${this.featureKeyword}:\n`
-        this.offset += 1
+        featurePrefix = `${featurePrefix}${this.featureKeyword}:\n#\n`
+        this.offset += 2
       } else {
         // 部分录入，需要补全Feature部分
         const subsetKeyword = gherkinLanguages[this.language][this.subsetType as LanguageSubsetIdentifier][0]
-        featurePrefix = `${featurePrefix}${this.featureKeyword}:\n${subsetKeyword}:\n`
-        this.offset += 2
+        featurePrefix = `${featurePrefix}${this.featureKeyword}:\n${subsetKeyword}:\n#\n`
+        this.offset += 3
       }
     }
 
