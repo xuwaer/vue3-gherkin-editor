@@ -3,12 +3,15 @@ import GherkinLinter, { type OnParseCallback } from '../../lib/gherkin-linter'
 import type { LanguageIdentifier } from '../../lib/gherkin-languages'
 import type { Ace } from 'ace-builds'
 
+type OnErrorCallback = (errors: Ace.Annotation[]) => Ace.Annotation[]
+
 export default class GherkinAnnotator {
   private linter: GherkinLinter
   public language: LanguageIdentifier = 'en'
   public mode: '' | 'scenario' | 'background' | 'feature' = ''
 
-  constructor(public session: Ace.EditSession, private onParse?: OnParseCallback) {
+  constructor(public session: Ace.EditSession, private options?: Partial<{ onParse: OnParseCallback, formatErrors: OnErrorCallback }>) {
+    const { onParse } = options || {}
     this.linter = new GherkinLinter(onParse)
   }
 
@@ -52,7 +55,8 @@ export default class GherkinAnnotator {
     }
 
     if (errors.length > 0) {
-      this.session.setAnnotations(errors as any[])
+      const ann = this.options?.formatErrors?.(errors as any[]) ?? errors
+      this.session.setAnnotations(ann as any[])
     } else {
       this.session.clearAnnotations()
     }

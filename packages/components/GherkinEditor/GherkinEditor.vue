@@ -27,7 +27,7 @@ import {
 import {
   setGherkinDialect as setFeatureDialect,
   getGherkinDialect as getFeatureDialect
-} from "../../modules/dialects/gherkin_feature_i18n"
+} from '../../modules/dialects/gherkin_feature_i18n'
 import {
   setGherkinDialect as setScenarioDialect,
   getGherkinDialect as getScenarioDialect
@@ -78,13 +78,18 @@ export interface GherkinEditorProps {
   autoCompleteFunction?: AutoCompleteFunc
   autoFocus?: boolean
   theme?: 'cucumber' | 'jira'
-  mode?: 'gherkin_i18n' | 'gherkin_background_i18n' | 'gherkin_scenario_i18n' | 'gherkin_feature_i18n'
+  mode?:
+    | 'gherkin_i18n'
+    | 'gherkin_background_i18n'
+    | 'gherkin_scenario_i18n'
+    | 'gherkin_feature_i18n'
   fontSize?: number
   showPrintMargin?: boolean
   showGutter?: boolean
   highlightActiveLine?: boolean
   activateLinter?: boolean
   setOptions?: Partial<Ace.EditorOptions>
+  formatErrors?: (errors: Ace.Annotation[]) => Ace.Annotation[]
 }
 
 const props = withDefaults(defineProps<GherkinEditorProps>(), {
@@ -102,7 +107,8 @@ const props = withDefaults(defineProps<GherkinEditorProps>(), {
   showGutter: false,
   highlightActiveLine: false,
   activateLinter: false,
-  setOptions: () => ({})
+  setOptions: () => ({}),
+  formatErrors: (errors: Ace.Annotation[]) => errors
 })
 
 const {
@@ -113,6 +119,7 @@ const {
   language,
   mode,
   onParse,
+  formatErrors,
   setOptions,
   showGutter,
   theme,
@@ -175,7 +182,10 @@ watchEffect(() => {
   const session = editor.value?.getSession()
 
   if (!gherkinAnnotator.value) {
-    gherkinAnnotator.value = new GherkinAnnotator(session, onParse.value)
+    gherkinAnnotator.value = new GherkinAnnotator(session, {
+      onParse: onParse.value,
+      formatErrors: formatErrors.value
+    })
   } else {
     gherkinAnnotator.value.setSession(session)
   }
